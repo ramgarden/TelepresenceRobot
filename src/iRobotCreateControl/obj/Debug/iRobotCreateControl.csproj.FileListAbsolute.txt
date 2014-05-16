@@ -1,0 +1,18 @@
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\bin\Debug\iRobotCreateControl.exe
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\bin\Debug\iRobotCreateControl.pdb
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\obj\Debug\ResolveAssemblyReference.cache
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\obj\Debug\iRobotCreateControl.Form1.resources
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\obj\Debug\iRobotCreateControl.Properties.Resources.resources
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\obj\Debug\GenerateResource.read.1.tlog
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\obj\Debug\GenerateResource.write.1.tlog
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\obj\Debug\iRobotCreateControl.exe
+C:\dev\projects\iRobotCreateControl\iRobotCreateControl\obj\Debug\iRobotCreateControl.pdb
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\bin\Debug\iRobotCreateControl.exe
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\bin\Debug\iRobotCreateControl.pdb
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.Form1.resources
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.Properties.Resources.resources
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.exe
+C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.pdb

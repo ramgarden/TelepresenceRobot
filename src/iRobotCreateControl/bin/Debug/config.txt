@@ -1,0 +1,10 @@
+AutoConnectLocalRobot: False
+COMPort: COM3
+AutoStartServer: False
+ServerPort: 25000
+ServerPassword: abracadabra
+AutoConnectRemoteRobot: False
+RemoteIP: 127.0.0.1
+RemotePort: 25000
+RemotePassword: abracadabra
+KeyboardControlMotorSpeed: 200

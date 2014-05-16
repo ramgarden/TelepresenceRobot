@@ -1,0 +1,10 @@
+v(none) - posted 2-9-2011, first release
+
+v0.2 - posted 2-11-2011
+
+- better power down management when remote controller disconnects and robot is not docked.  It turns the robot completely off so it will charge if manually placed on docking station.  Before it would only properly charge if self-docked.
+- remote viewer now sees the battery level of either the netbook or robot, which ever is smaller.
+- fixed out of range bug (robot puts 255 in upper byte if charge drops very low)
+- tweaks to some debug spew and status updates.
+- tweak to drive thread to remove redundant requests to robot
+- input mask on some of the input fields. 
