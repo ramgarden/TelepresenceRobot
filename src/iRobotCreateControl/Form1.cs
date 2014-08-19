@@ -527,6 +527,12 @@ namespace iRobotCreateControl
 
                         Byte[] sendBytes = Encoding.ASCII.GetBytes("control ok");
                         f.udpClientListener.Send(sendBytes, sendBytes.Length,f.listenerEndPoint);
+                        
+                        //crazy hack for when the robot doesn't send the battery status.
+                        if(f.robot.sensorState.BatteryCapacity == 0)
+                            	f.robot.sensorState.BatteryCapacity = 1;
+                        if(f.robot.sensorState.BatteryCharge == 0)
+                            	f.robot.sensorState.BatteryCharge = 1;
 
                         if (true)//send status message
                         {
@@ -583,7 +589,7 @@ namespace iRobotCreateControl
                                             (f.robot.sensorState.CliffFrontLeft ? 0x0040 : 0) |
                                             (f.robot.sensorState.CliffFrontRight ? 0x0080 : 0) |
                                             (f.robot.sensorState.CliffRight ? 0x0100 : 0);
-
+                            
                             int robotCharge = (f.robot.sensorState.BatteryCharge * 100 / f.robot.sensorState.BatteryCapacity);
                             int batteryCharge = (int)(f.power.BatteryLifePercent * 100);
                             if (robotCharge < batteryCharge)
@@ -603,6 +609,8 @@ namespace iRobotCreateControl
                         f.btnCoverAndDock_Click(f, null);
                     if (parts[0].CompareTo("home") == 0)
                         f.btnStop_Click(f, null);
+                    if (parts[0].CompareTo("robot_power") == 0)
+                    	f.BtnRobotPwrClick(f, null);
                 }
             }
 
@@ -821,7 +829,7 @@ namespace iRobotCreateControl
 
         private void btnControl_Click(object sender, EventArgs e)
         {
-            if (!robot.connected)
+        	if (!robot.connected)
             {
                 if (robot.Connect(tbCOMPort.Text))
                 {
@@ -1076,6 +1084,30 @@ namespace iRobotCreateControl
             }
         }
 
+        /// <summary>
+        /// This button is used to toggle the robot's power.
+        /// It calls the wakeup() method which uses the Serial
+        /// DTR signal line connected to the power toggle line
+        /// in the robot's DB25 port to turn the robot on or off
+        /// every time the line goes from low to high.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void BtnRobotPwrClick(object sender, System.EventArgs e)
+        {
+        	robot.wakeup();
+        	//try remote send too
+            if (udpClientSender == null)
+                return;
+            if (udpClientSender.Client == null)
+                return;
+            if (udpClientSender.Client.Connected)
+            {
+                Byte[] sendBytes = Encoding.ASCII.GetBytes("robot_power");
+                udpClientSender.Send(sendBytes, sendBytes.Length);
+                lastSentNetworkMessageTimestamp = System.Environment.TickCount;
+            }
+        }
 
         private void button1_KeyDown(object sender, KeyEventArgs e)
         {

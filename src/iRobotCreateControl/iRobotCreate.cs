@@ -189,6 +189,7 @@ namespace iRobot
                     connected = true;
                     Thread.Sleep(50);
                 }
+                    
             }
             catch (System.Exception ex)
             {
@@ -197,13 +198,26 @@ namespace iRobot
             }
             return true;
         }
+        
+        public void wakeup() {
+        	if (port != null) {  
+				Console.Out.WriteLine("Attempting to wake the bot...");        		
+        		port.DtrEnable = false;
+        		Thread.Sleep(2000);
+	            port.DtrEnable = true;	            
+        	} 
+			else
+			{
+				Console.Out.WriteLine("Port is null!");
+			}
+	    }
 
         public void Disconnect()
         {
             if(!connected)
                 return;
 
-            SoftReset();
+            //SoftReset();
             if (port != null)
             {
                 if (port.IsOpen)
@@ -321,7 +335,11 @@ namespace iRobot
             //read as much as possible to clear the communication buffer
             int bytes = port.Read(buffer, 0,buffer.Length);
 //            for(int i =0; i < bytes; i++)
-//                Console.Write((char)buffer[i]);
+//            {
+//                //Console.Write((char)buffer[i]);
+//            	Console.Write(buffer[i]);
+//            	Console.Write("-");
+//            }
 //            Console.WriteLine("");
 
 
@@ -337,9 +355,9 @@ namespace iRobot
             {
                  if(ParseStreamingGroup0(group0messageSize, recieveBuffer, recieveBufferReadIndex))
                  {
-//                     for(int i =recieveBufferReadIndex; i < recieveBufferReadIndex+group0messageSize; i++)
-//                         Console.Out.Write((int)recieveBuffer[i % recieveBuffer.Length] + " ");
-//                     Console.Out.WriteLine(" message " + sensorState.ChargingState + " " + sensorState.BatteryCharge + " " + sensorState.BatteryCapacity + " " + Environment.TickCount);
+                     for(int i =recieveBufferReadIndex; i < recieveBufferReadIndex+group0messageSize; i++)
+                         Console.Out.Write((int)recieveBuffer[i % recieveBuffer.Length] + " ");
+                     Console.Out.WriteLine(" message " + sensorState.ChargingState + " " + sensorState.BatteryCharge + " " + sensorState.BatteryCapacity + " " + Environment.TickCount);
 
 
                     recieveBufferReadIndex += group0messageSize;
@@ -360,6 +378,7 @@ namespace iRobot
                 recieveBufferWriteIndex = count;
                 recieveBufferReadIndex = 0;
             }
+            Thread.Sleep(500);
         }
 
 
