@@ -73,6 +73,9 @@
         	this.label5 = new System.Windows.Forms.Label();
         	this.tbRemotePassword = new System.Windows.Forms.TextBox();
         	this.tabJoystick = new System.Windows.Forms.TabPage();
+        	this.tabVideo = new System.Windows.Forms.TabPage();
+        	this.vlcControl2 = new Vlc.DotNet.Forms.VlcControl();
+        	this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
         	this.btnRobotPwr = new System.Windows.Forms.Button();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
         	this.tabControl.SuspendLayout();
@@ -81,6 +84,7 @@
         	this.tabPage2.SuspendLayout();
         	this.groupBox2.SuspendLayout();
         	this.tabJoystick.SuspendLayout();
+        	this.tabVideo.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// pictureBox1
@@ -326,11 +330,12 @@
         	this.tabControl.Controls.Add(this.tabPage1);
         	this.tabControl.Controls.Add(this.tabPage2);
         	this.tabControl.Controls.Add(this.tabJoystick);
+        	this.tabControl.Controls.Add(this.tabVideo);
         	this.tabControl.Location = new System.Drawing.Point(12, 12);
         	this.tabControl.Name = "tabControl";
         	this.tabControl.SelectedIndex = 0;
         	this.tabControl.Size = new System.Drawing.Size(315, 291);
-        	this.tabControl.TabIndex = 29;
+        	this.tabControl.TabIndex = 1;
         	// 
         	// tabPage1
         	// 
@@ -540,6 +545,38 @@
         	this.tabJoystick.Text = "Visual Joystick";
         	this.tabJoystick.UseVisualStyleBackColor = true;
         	// 
+        	// tabVideo
+        	// 
+        	this.tabVideo.Controls.Add(this.vlcControl2);
+        	this.tabVideo.Controls.Add(this.vlcControl1);
+        	this.tabVideo.Location = new System.Drawing.Point(4, 22);
+        	this.tabVideo.Name = "tabVideo";
+        	this.tabVideo.Padding = new System.Windows.Forms.Padding(3);
+        	this.tabVideo.Size = new System.Drawing.Size(307, 265);
+        	this.tabVideo.TabIndex = 3;
+        	this.tabVideo.Text = "Video";
+        	this.tabVideo.UseVisualStyleBackColor = true;
+        	// 
+        	// vlcControl2
+        	// 
+        	this.vlcControl2.Location = new System.Drawing.Point(0, 141);
+        	this.vlcControl2.Name = "vlcControl2";
+        	this.vlcControl2.Rate = 0F;
+        	this.vlcControl2.Size = new System.Drawing.Size(307, 124);
+        	this.vlcControl2.TabIndex = 1;
+        	this.vlcControl2.Text = "vlcControl2";
+        	this.vlcControl2.Click += new System.EventHandler(this.VlcControl2Click);
+        	// 
+        	// vlcControl1
+        	// 
+        	this.vlcControl1.Location = new System.Drawing.Point(-2, 3);
+        	this.vlcControl1.Name = "vlcControl1";
+        	this.vlcControl1.Rate = 0F;
+        	this.vlcControl1.Size = new System.Drawing.Size(309, 132);
+        	this.vlcControl1.TabIndex = 0;
+        	this.vlcControl1.Text = "Click to open camera";
+        	this.vlcControl1.Click += new System.EventHandler(this.VlcControl1Click);
+        	// 
         	// btnRobotPwr
         	// 
         	this.btnRobotPwr.Location = new System.Drawing.Point(19, 345);
@@ -581,9 +618,13 @@
         	this.groupBox2.ResumeLayout(false);
         	this.groupBox2.PerformLayout();
         	this.tabJoystick.ResumeLayout(false);
+        	this.tabVideo.ResumeLayout(false);
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private Vlc.DotNet.Forms.VlcControl vlcControl2;
+        private Vlc.DotNet.Forms.VlcControl vlcControl1;
+        private System.Windows.Forms.TabPage tabVideo;
         private System.Windows.Forms.Button btnRobotPwr;
 
         #endregion

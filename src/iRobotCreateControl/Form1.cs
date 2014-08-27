@@ -14,6 +14,9 @@ using iRobot;
 using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Vlc.DotNet.Core;
+using Vlc.DotNet.Core.Medias;
+using Vlc.DotNet.Forms;
 
 
 namespace iRobotCreateControl
@@ -982,7 +985,7 @@ namespace iRobotCreateControl
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.KeyPreview = true;
+        	this.KeyPreview = true;
 
             robot = new iRobotCreate();
             robot.OnSensorUpdateRecieved += new iRobotCreate.SensorUpdateHandler(OnSensorUpdate);
@@ -1268,6 +1271,81 @@ namespace iRobotCreateControl
                 return;
             if (!System.Text.RegularExpressions.Regex.IsMatch(e.KeyChar.ToString(), "\\d+"))
                 e.Handled = true;
+        }
+        
+        /// <summary>
+        /// The first time the user clicks on the video control it should try to open
+        /// the stream from the web cam.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void VlcControl1Click(object sender, EventArgs e)
+        {
+        	/////////////////////////////////////////////
+        	//find the first video device and open it's stream.
+        	//var media = new Vlc.DotNet.Core.Medias.LocationMedia("dshow:// :dshow-vdev=Virtual Webcam 8.0 :live-caching=300"); 
+			//vlcControl1.Media = media;
+			//vlcControl1.Play();
+			//////////////////////////////////////////
+			LocationMedia media2 = new LocationMedia("dshow:// :dshow-vdev=Virtual Webcam 8.0 :live-caching=300");
+			//media2.AddOption(":sout=#transcode{vcodec=h264,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=ts,dst=:8080/1}");
+			//media2.AddOption(":sout=#transcode{vcodec=h264,acodec=none}:http{mux=ts,dst=localhost:8080/1}");
+			//media2.AddOption("#transcode{vcodec=h264,vb=0,scale=0,acodec=mpga,ab=128,channels=2,samplerate=44100}:#rtsp{dst=localhost,sdp=rtsp://localhost:8554}");
+			media2.AddOption(":sout=#transcode{vcodec=h264,acodec=mp3,vb=800,ab=128}:standard{access=http,mux=ts,dst=localhost:8080}");
+			media2.AddOption(":sout-all");
+			media2.AddOption(":sout-keep");
+			vlcControl2.Media = media2;
+			vlcControl2.Play();	
+			//////////////////////////////////////////////
+			//var media = new Vlc.DotNet.Core.Medias.LocationMedia("rtsp://239.255.12.42:5004"); 
+			Thread.Sleep(3000);
+			var media = new Vlc.DotNet.Core.Medias.LocationMedia("http://localhost:8080/");
+			vlcControl1.Media = media;
+			vlcControl1.Play();
+			
+        }
+        
+        void PictureBox2Click(object sender, EventArgs e)
+        {
+        	try
+			{
+//        		MessageBox.Show("clicked picbox2!");
+//				LibVlc vlc = new LibVlc();
+//				vlc.Initialize();
+//				vlc.VideoOutput = pictureBox2;
+//				vlc.PlaylistClear();
+//				string[] Options=new string[] { ":sout=#duplicate{dst=display,dst=std {access=udp,mux=ts,dst=localhost:1234}}" };
+//				vlc.AddTarget("dshow:// :dshow-vdev=Virtual Webcam 8.0 :live-caching=300", Options);
+//				vlc.Play();
+			}
+			catch (Exception e1)
+			{
+				MessageBox.Show(e1.ToString());
+			}
+        }
+        
+        void PictureBox3Click(object sender, EventArgs e)
+        {
+			try
+			{
+//				MessageBox.Show("clicked picbox3!");
+//				LibVlc vlc = new LibVlc();
+//				vlc.Initialize();
+//				vlc.VideoOutput = pictureBox3;
+//				vlc.PlaylistClear();
+//				string[] options = { ":sout=#duplicate{dst=display,dst=std{access=file,mux=asf,dst=\"C:\\iRobot-Output-Video.asf\"}}" };
+//				vlc.AddTarget("udp://@localhost:1234", options);
+//				vlc.Play();
+			}
+			catch (Exception e1)
+			{
+				MessageBox.Show(e1.ToString());
+			}        	
+        }
+        
+        void VlcControl2Click(object sender, EventArgs e)
+        {
+        	
         }
     }
 }
