@@ -56,6 +56,9 @@ namespace iRobotCreateControl
 
 
         bool[] KeyState = new bool[500];
+        
+        bool videoStarted = false;
+        bool connectedToRemoteRobot = false;
 
         [DllImport("user32.dll", SetLastError = true)]
         static extern uint SendInput(uint nInputs, ref INPUT pInputs, int cbSize);
@@ -302,6 +305,8 @@ namespace iRobotCreateControl
             btnStartServer.Invoke((MethodInvoker)(() => btnStartServer.Enabled = true));
 
             networkConfiguationTasksComplete = true;
+            
+            BtnVideoClick(null,null); //start the video streaming on the server.
         }
 
         void QueryTopWindow(object o)
@@ -383,7 +388,7 @@ namespace iRobotCreateControl
             }
             catch (Exception x)
             {
-                Console.Out.WriteLine("could no contact IP address server: " + x.ToString());
+                Console.Out.WriteLine("could not contact IP address server: " + x.ToString());
             }
 
             return tempString;
@@ -971,6 +976,7 @@ namespace iRobotCreateControl
             
             //if we get to here without errors then we are connected
             btnConnectIP.BackColor = Color.Green;
+            connectedToRemoteRobot = true;
         }
 
         private void cbAutoConnect_CheckedChanged(object sender, EventArgs e)
@@ -1345,6 +1351,74 @@ namespace iRobotCreateControl
         
         void VlcControl2Click(object sender, EventArgs e)
         {
+        	
+        }
+        
+        void Panel2Paint(object sender, PaintEventArgs e)
+        {
+        	
+        }
+        
+        void Panel1Paint(object sender, PaintEventArgs e)
+        {
+        	
+        }
+        
+        /// <summary>
+        /// start streaming the camera from this machine's IP.
+        /// If we are the remote robot running the server then we need
+        /// to get the video from the IP that connected to our server.
+        /// If we are the machine that connected to the remote robot
+        /// then we need to get the video from the remote robot's IP.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void BtnVideoClick(object sender, EventArgs e)
+        {
+        	//toggle (start/stop) the video every time this button is clicked.
+        	if (!videoStarted) {
+        		LocationMedia media2 = new LocationMedia("dshow:// :dshow-vdev=Virtual Webcam 8.0 :live-caching=300");
+				media2.AddOption(":sout=#transcode{vcodec=h264,acodec=mp3,vb=800,ab=128}:standard{access=http,mux=ts,dst=localhost:8080}");
+				media2.AddOption(":sout-all");
+				media2.AddOption(":sout-keep");
+				vlcControl2.Media = media2;
+				vlcControl2.Play();	
+				//////////////////////////////////////////////
+				Thread.Sleep(10000);
+				
+				//connectedToRemoteRobot will be true if we are on a machine that connected to
+				// the remote robot.  False if we are the server.
+				String ipAddress = "";
+				if (connectedToRemoteRobot) {
+					//just use the IP address of the remote robot.
+					ipAddress = tbRemoteIP.Text;
+				}
+				else
+				{
+					//use the client IP address that connected to our server.
+					if (listenerEndPoint != null) {
+						ipAddress = listenerEndPoint.Address.ToString();
+						Console.WriteLine("ListenerEndPoint: " + ipAddress);
+					}
+					
+					if (senderEndPoint != null) {
+						ipAddress = senderEndPoint.Address.ToString();
+						Console.WriteLine("SenderEndPoint: " + ipAddress);
+					}
+				}
+				
+				var media = new Vlc.DotNet.Core.Medias.LocationMedia("http://" + ipAddress + ":8080/");
+				vlcControl1.Media = media;
+				vlcControl1.Play();
+				
+				videoStarted = true;
+        	}
+        	else
+        	{        		
+        		vlcControl1.Stop();
+        		vlcControl2.Stop();
+        		videoStarted = false;
+        	}
         	
         }
     }

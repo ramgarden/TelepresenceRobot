@@ -74,9 +74,13 @@
         	this.tbRemotePassword = new System.Windows.Forms.TextBox();
         	this.tabJoystick = new System.Windows.Forms.TabPage();
         	this.tabVideo = new System.Windows.Forms.TabPage();
-        	this.vlcControl2 = new Vlc.DotNet.Forms.VlcControl();
+        	this.splitContainer2 = new System.Windows.Forms.SplitContainer();
         	this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
+        	this.vlcControl2 = new Vlc.DotNet.Forms.VlcControl();
         	this.btnRobotPwr = new System.Windows.Forms.Button();
+        	this.groupBox3 = new System.Windows.Forms.GroupBox();
+        	this.btnVideo = new System.Windows.Forms.Button();
+        	this.splitContainer1 = new System.Windows.Forms.SplitContainer();
         	((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
         	this.tabControl.SuspendLayout();
         	this.tabPage1.SuspendLayout();
@@ -85,6 +89,15 @@
         	this.groupBox2.SuspendLayout();
         	this.tabJoystick.SuspendLayout();
         	this.tabVideo.SuspendLayout();
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+        	this.splitContainer2.Panel1.SuspendLayout();
+        	this.splitContainer2.Panel2.SuspendLayout();
+        	this.splitContainer2.SuspendLayout();
+        	this.groupBox3.SuspendLayout();
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+        	this.splitContainer1.Panel1.SuspendLayout();
+        	this.splitContainer1.Panel2.SuspendLayout();
+        	this.splitContainer1.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// pictureBox1
@@ -137,7 +150,7 @@
         	// 
         	// btnCoverAndDock
         	// 
-        	this.btnCoverAndDock.Location = new System.Drawing.Point(229, 315);
+        	this.btnCoverAndDock.Location = new System.Drawing.Point(221, 12);
         	this.btnCoverAndDock.Name = "btnCoverAndDock";
         	this.btnCoverAndDock.Size = new System.Drawing.Size(88, 23);
         	this.btnCoverAndDock.TabIndex = 9;
@@ -194,7 +207,7 @@
         	// lblStatus
         	// 
         	this.lblStatus.AutoSize = true;
-        	this.lblStatus.Location = new System.Drawing.Point(14, 377);
+        	this.lblStatus.Location = new System.Drawing.Point(6, 78);
         	this.lblStatus.Name = "lblStatus";
         	this.lblStatus.Size = new System.Drawing.Size(43, 13);
         	this.lblStatus.TabIndex = 15;
@@ -268,7 +281,7 @@
         	// 
         	// btnKeyboardControl
         	// 
-        	this.btnKeyboardControl.Location = new System.Drawing.Point(19, 309);
+        	this.btnKeyboardControl.Location = new System.Drawing.Point(9, 8);
         	this.btnKeyboardControl.Name = "btnKeyboardControl";
         	this.btnKeyboardControl.Size = new System.Drawing.Size(193, 35);
         	this.btnKeyboardControl.TabIndex = 23;
@@ -280,7 +293,7 @@
         	// 
         	// tbKeyBoardSpeed
         	// 
-        	this.tbKeyBoardSpeed.Location = new System.Drawing.Point(124, 348);
+        	this.tbKeyBoardSpeed.Location = new System.Drawing.Point(116, 46);
         	this.tbKeyBoardSpeed.Name = "tbKeyBoardSpeed";
         	this.tbKeyBoardSpeed.Size = new System.Drawing.Size(34, 20);
         	this.tbKeyBoardSpeed.TabIndex = 24;
@@ -291,7 +304,7 @@
         	// label1
         	// 
         	this.label1.AutoSize = true;
-        	this.label1.Location = new System.Drawing.Point(158, 351);
+        	this.label1.Location = new System.Drawing.Point(153, 49);
         	this.label1.Name = "label1";
         	this.label1.Size = new System.Drawing.Size(38, 13);
         	this.label1.TabIndex = 25;
@@ -299,7 +312,7 @@
         	// 
         	// btnStop
         	// 
-        	this.btnStop.Location = new System.Drawing.Point(229, 346);
+        	this.btnStop.Location = new System.Drawing.Point(221, 41);
         	this.btnStop.Name = "btnStop";
         	this.btnStop.Size = new System.Drawing.Size(88, 23);
         	this.btnStop.TabIndex = 26;
@@ -331,10 +344,11 @@
         	this.tabControl.Controls.Add(this.tabPage2);
         	this.tabControl.Controls.Add(this.tabJoystick);
         	this.tabControl.Controls.Add(this.tabVideo);
-        	this.tabControl.Location = new System.Drawing.Point(12, 12);
+        	this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.tabControl.Location = new System.Drawing.Point(0, 0);
         	this.tabControl.Name = "tabControl";
         	this.tabControl.SelectedIndex = 0;
-        	this.tabControl.Size = new System.Drawing.Size(315, 291);
+        	this.tabControl.Size = new System.Drawing.Size(509, 403);
         	this.tabControl.TabIndex = 1;
         	// 
         	// tabPage1
@@ -357,7 +371,7 @@
         	this.tabPage1.Location = new System.Drawing.Point(4, 22);
         	this.tabPage1.Name = "tabPage1";
         	this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage1.Size = new System.Drawing.Size(307, 265);
+        	this.tabPage1.Size = new System.Drawing.Size(501, 377);
         	this.tabPage1.TabIndex = 0;
         	this.tabPage1.Text = "Local Robot";
         	this.tabPage1.UseVisualStyleBackColor = true;
@@ -427,7 +441,7 @@
         	this.tabPage2.Location = new System.Drawing.Point(4, 22);
         	this.tabPage2.Name = "tabPage2";
         	this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage2.Size = new System.Drawing.Size(307, 265);
+        	this.tabPage2.Size = new System.Drawing.Size(501, 377);
         	this.tabPage2.TabIndex = 1;
         	this.tabPage2.Text = "Remote Robot";
         	this.tabPage2.UseVisualStyleBackColor = true;
@@ -540,46 +554,65 @@
         	this.tabJoystick.Location = new System.Drawing.Point(4, 22);
         	this.tabJoystick.Name = "tabJoystick";
         	this.tabJoystick.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabJoystick.Size = new System.Drawing.Size(307, 265);
+        	this.tabJoystick.Size = new System.Drawing.Size(501, 377);
         	this.tabJoystick.TabIndex = 2;
         	this.tabJoystick.Text = "Visual Joystick";
         	this.tabJoystick.UseVisualStyleBackColor = true;
         	// 
         	// tabVideo
         	// 
-        	this.tabVideo.Controls.Add(this.vlcControl2);
-        	this.tabVideo.Controls.Add(this.vlcControl1);
+        	this.tabVideo.Controls.Add(this.splitContainer2);
         	this.tabVideo.Location = new System.Drawing.Point(4, 22);
         	this.tabVideo.Name = "tabVideo";
         	this.tabVideo.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabVideo.Size = new System.Drawing.Size(307, 265);
+        	this.tabVideo.Size = new System.Drawing.Size(501, 377);
         	this.tabVideo.TabIndex = 3;
         	this.tabVideo.Text = "Video";
         	this.tabVideo.UseVisualStyleBackColor = true;
         	// 
-        	// vlcControl2
+        	// splitContainer2
         	// 
-        	this.vlcControl2.Location = new System.Drawing.Point(0, 141);
-        	this.vlcControl2.Name = "vlcControl2";
-        	this.vlcControl2.Rate = 0F;
-        	this.vlcControl2.Size = new System.Drawing.Size(307, 124);
-        	this.vlcControl2.TabIndex = 1;
-        	this.vlcControl2.Text = "vlcControl2";
-        	this.vlcControl2.Click += new System.EventHandler(this.VlcControl2Click);
+        	this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+        	this.splitContainer2.Name = "splitContainer2";
+        	this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+        	// 
+        	// splitContainer2.Panel1
+        	// 
+        	this.splitContainer2.Panel1.Controls.Add(this.vlcControl1);
+        	// 
+        	// splitContainer2.Panel2
+        	// 
+        	this.splitContainer2.Panel2.Controls.Add(this.vlcControl2);
+        	this.splitContainer2.Size = new System.Drawing.Size(495, 371);
+        	this.splitContainer2.SplitterDistance = 180;
+        	this.splitContainer2.TabIndex = 2;
         	// 
         	// vlcControl1
         	// 
-        	this.vlcControl1.Location = new System.Drawing.Point(-2, 3);
+        	this.vlcControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.vlcControl1.Location = new System.Drawing.Point(0, 0);
         	this.vlcControl1.Name = "vlcControl1";
         	this.vlcControl1.Rate = 0F;
-        	this.vlcControl1.Size = new System.Drawing.Size(309, 132);
+        	this.vlcControl1.Size = new System.Drawing.Size(495, 180);
         	this.vlcControl1.TabIndex = 0;
         	this.vlcControl1.Text = "Click to open camera";
         	this.vlcControl1.Click += new System.EventHandler(this.VlcControl1Click);
         	// 
+        	// vlcControl2
+        	// 
+        	this.vlcControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.vlcControl2.Location = new System.Drawing.Point(0, 0);
+        	this.vlcControl2.Name = "vlcControl2";
+        	this.vlcControl2.Rate = 0F;
+        	this.vlcControl2.Size = new System.Drawing.Size(495, 187);
+        	this.vlcControl2.TabIndex = 1;
+        	this.vlcControl2.Text = "vlcControl2";
+        	this.vlcControl2.Click += new System.EventHandler(this.VlcControl2Click);
+        	// 
         	// btnRobotPwr
         	// 
-        	this.btnRobotPwr.Location = new System.Drawing.Point(19, 345);
+        	this.btnRobotPwr.Location = new System.Drawing.Point(11, 43);
         	this.btnRobotPwr.Name = "btnRobotPwr";
         	this.btnRobotPwr.Size = new System.Drawing.Size(94, 29);
         	this.btnRobotPwr.TabIndex = 30;
@@ -587,21 +620,60 @@
         	this.btnRobotPwr.UseVisualStyleBackColor = true;
         	this.btnRobotPwr.Click += new System.EventHandler(this.BtnRobotPwrClick);
         	// 
+        	// groupBox3
+        	// 
+        	this.groupBox3.Controls.Add(this.btnVideo);
+        	this.groupBox3.Controls.Add(this.lblStatus);
+        	this.groupBox3.Controls.Add(this.btnKeyboardControl);
+        	this.groupBox3.Controls.Add(this.btnRobotPwr);
+        	this.groupBox3.Controls.Add(this.tbKeyBoardSpeed);
+        	this.groupBox3.Controls.Add(this.label1);
+        	this.groupBox3.Controls.Add(this.btnStop);
+        	this.groupBox3.Controls.Add(this.btnCoverAndDock);
+        	this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+        	this.groupBox3.Location = new System.Drawing.Point(0, -4);
+        	this.groupBox3.Name = "groupBox3";
+        	this.groupBox3.Size = new System.Drawing.Size(509, 98);
+        	this.groupBox3.TabIndex = 31;
+        	this.groupBox3.TabStop = false;
+        	// 
+        	// btnVideo
+        	// 
+        	this.btnVideo.Location = new System.Drawing.Point(315, 12);
+        	this.btnVideo.Name = "btnVideo";
+        	this.btnVideo.Size = new System.Drawing.Size(111, 23);
+        	this.btnVideo.TabIndex = 31;
+        	this.btnVideo.Text = "Start/Stop Video";
+        	this.btnVideo.UseVisualStyleBackColor = true;
+        	this.btnVideo.Click += new System.EventHandler(this.BtnVideoClick);
+        	// 
+        	// splitContainer1
+        	// 
+        	this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+        	this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+        	this.splitContainer1.Name = "splitContainer1";
+        	this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+        	// 
+        	// splitContainer1.Panel1
+        	// 
+        	this.splitContainer1.Panel1.Controls.Add(this.tabControl);
+        	this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
+        	// 
+        	// splitContainer1.Panel2
+        	// 
+        	this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
+        	this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2Paint);
+        	this.splitContainer1.Size = new System.Drawing.Size(509, 501);
+        	this.splitContainer1.SplitterDistance = 403;
+        	this.splitContainer1.TabIndex = 32;
+        	// 
         	// Form1
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        	this.ClientSize = new System.Drawing.Size(335, 403);
-        	this.Controls.Add(this.btnRobotPwr);
-        	this.Controls.Add(this.tabControl);
-        	this.Controls.Add(this.btnStop);
-        	this.Controls.Add(this.label1);
-        	this.Controls.Add(this.tbKeyBoardSpeed);
-        	this.Controls.Add(this.btnKeyboardControl);
-        	this.Controls.Add(this.lblStatus);
-        	this.Controls.Add(this.btnCoverAndDock);
+        	this.ClientSize = new System.Drawing.Size(509, 501);
+        	this.Controls.Add(this.splitContainer1);
         	this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-        	this.MaximizeBox = false;
         	this.Name = "Form1";
         	this.Text = "iRobot Create Control";
         	this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -619,9 +691,22 @@
         	this.groupBox2.PerformLayout();
         	this.tabJoystick.ResumeLayout(false);
         	this.tabVideo.ResumeLayout(false);
+        	this.splitContainer2.Panel1.ResumeLayout(false);
+        	this.splitContainer2.Panel2.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+        	this.splitContainer2.ResumeLayout(false);
+        	this.groupBox3.ResumeLayout(false);
+        	this.groupBox3.PerformLayout();
+        	this.splitContainer1.Panel1.ResumeLayout(false);
+        	this.splitContainer1.Panel2.ResumeLayout(false);
+        	((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+        	this.splitContainer1.ResumeLayout(false);
         	this.ResumeLayout(false);
-        	this.PerformLayout();
         }
+        private System.Windows.Forms.Button btnVideo;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox groupBox3;
         private Vlc.DotNet.Forms.VlcControl vlcControl2;
         private Vlc.DotNet.Forms.VlcControl vlcControl1;
         private System.Windows.Forms.TabPage tabVideo;
