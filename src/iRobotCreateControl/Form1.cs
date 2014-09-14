@@ -250,6 +250,9 @@ namespace iRobotCreateControl
                 Console.Out.WriteLine("Querying for external IP: " + getMyIP_URL);
                 string externalIP = WebQuery(getMyIP_URL);
                 char[] separators = { ' ', '<' };
+                if (externalIP == null) {
+                	externalIP = "";
+                }
                 string[] parts = externalIP.Split(new char[] { ' ', '<' });
                 for (int i = 0; i < parts.Length; i++)
                 {
@@ -306,7 +309,7 @@ namespace iRobotCreateControl
 
             networkConfiguationTasksComplete = true;
             
-            BtnVideoClick(null,null); //start the video streaming on the server.
+            //BtnVideoClick(null,null); //start the video streaming on the server.
         }
 
         void QueryTopWindow(object o)
