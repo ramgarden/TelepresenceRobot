@@ -1380,10 +1380,18 @@ namespace iRobotCreateControl
         {
         	//toggle (start/stop) the video every time this button is clicked.
         	if (!videoStarted) {
-        		LocationMedia media2 = new LocationMedia("dshow:// :dshow-vdev=Virtual Webcam 8.0 :live-caching=300");
-				media2.AddOption(":sout=#transcode{vcodec=h264,acodec=mp3,vb=800,ab=128}:standard{access=http,mux=ts,dst=localhost:8080}");
+        		//LocationMedia media2 = new LocationMedia("dshow:// :dshow-vdev=Virtual Webcam 8.0 :live-caching=300");
+				//media2.AddOption(":sout=#transcode{vcodec=MJPG,acodec=none,vb=800,ab=16}:standard{access=http,mux=ts,dst=localhost:8080}");
+				
+				LocationMedia media2 = new LocationMedia("dshow://:dshow-vdev=Virtual Webcam 8.0 :live-caching=300");
+				//media2.AddOption(":sout=#transcode{vcodec=h264,acodec=none,vb=256,ab=128,channels=2,samplerate=44100}:http{mux=ts,dst=:8080/}");
+				
+				media2.AddOption(":sout=#transcode{vcodec=h264,acodec=mp3,vb=512,ab=128,channels=2,samplerate=44100}:duplicate{dst=http{mux=mp3,dst=:8081/1},dst=display}"); 
 				media2.AddOption(":sout-all");
 				media2.AddOption(":sout-keep");
+				
+				//media2.AddOption(":sout-all");
+				//media2.AddOption(":sout-keep");
 				vlcControl2.Media = media2;
 				vlcControl2.Play();	
 				//////////////////////////////////////////////
@@ -1395,6 +1403,7 @@ namespace iRobotCreateControl
 				if (connectedToRemoteRobot) {
 					//just use the IP address of the remote robot.
 					ipAddress = tbRemoteIP.Text;
+					Console.WriteLine("remote robot ip: " + ipAddress);
 				}
 				else
 				{

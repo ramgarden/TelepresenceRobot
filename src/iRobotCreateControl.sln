@@ -1,7 +1,10 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
+# SharpDevelop 4.4
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iRobotCreateControl", "iRobotCreateControl\iRobotCreateControl.csproj", "{BFBD20AC-5D43-4692-9021-CCE2852EB0AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeleRoomba", "TeleRoomba\TeleRoomba.csproj", "{525730A0-9E39-4317-BA59-BE13210843F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +16,10 @@ Global
 		{BFBD20AC-5D43-4692-9021-CCE2852EB0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFBD20AC-5D43-4692-9021-CCE2852EB0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFBD20AC-5D43-4692-9021-CCE2852EB0AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{525730A0-9E39-4317-BA59-BE13210843F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525730A0-9E39-4317-BA59-BE13210843F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525730A0-9E39-4317-BA59-BE13210843F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{525730A0-9E39-4317-BA59-BE13210843F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,5 @@
+C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\TeleRoomba\obj\Debug\TeleRoomba.csprojResolveAssemblyReference.cache
+C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\TeleRoomba\bin\TeleRoomba.dll
+C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\TeleRoomba\bin\TeleRoomba.pdb
+C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\TeleRoomba\obj\Debug\TeleRoomba.dll
+C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\TeleRoomba\obj\Debug\TeleRoomba.pdb
