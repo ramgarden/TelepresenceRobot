@@ -31,27 +31,32 @@ httpApp.post('/login', function(req, res) {
 
 httpApp.post('/forward', function(req, res) {
     console.log('Forward button pressed!');
-    SendUDP("0 100");
+	//125 -25  W
+    SendUDP("125 -25");
 });
 
 httpApp.post('/left', function(req, res) {
     console.log('Left button pressed!');
-    SendUDP("-100 0");
+	//-25 125  A
+    SendUDP("-25 125");
 });
 
 httpApp.post('/backward', function(req, res) {
     console.log('backward button pressed!');
-    SendUDP("0 -100");
+	//125 275  S
+    SendUDP("125 275");
 });
 
 httpApp.post('/right', function(req, res) {
     console.log('right button pressed!');
-    SendUDP("100 0");
+	//275 125  D
+    SendUDP("275 125");
 });
 
 httpApp.post('/stop', function(req, res) {
     console.log('stop button pressed!');
-    SendUDP("0 0");
+	//125 125  stop
+    SendUDP("125 125");
 });
 
 function SendUDP(message)

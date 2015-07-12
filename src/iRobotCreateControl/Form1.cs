@@ -769,6 +769,7 @@ namespace iRobotCreateControl
                         {
                             lblWheelVelocityR.Invoke((MethodInvoker)(() => lblWheelVelocityR.Text = "WheelVelocity: " + left + " " + right));
 
+                            Console.WriteLine("Sending UDP message: " + mousePoint.X + " " + mousePoint.Y);
                             Byte[] sendBytes = Encoding.ASCII.GetBytes(mousePoint.X + " " + mousePoint.Y);
                             udpClientSender.Send(sendBytes, sendBytes.Length);
                             lastSentNetworkMessageTimestamp = System.Environment.TickCount;
