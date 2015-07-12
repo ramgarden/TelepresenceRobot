@@ -3,10 +3,15 @@ var http    = require("http");              // http server core module
 var express = require("express");           // web framework external module
 var io      = require("socket.io");         // web socket external module
 var easyrtc = require("easyrtc");           // EasyRTC external module
+var bodyParser  = require('body-parser');
 
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
+httpApp.use(bodyParser.urlencoded({
+  extended: true
+}));
+httpApp.use(bodyParser.json());
 
 // Start Express http server on port 8080
 var webServer = http.createServer(httpApp).listen(8080);
@@ -16,6 +21,13 @@ var socketServer = io.listen(webServer, {"log level":1});
 
 // Start EasyRTC server
 var rtc = easyrtc.listen(httpApp, socketServer);
+
+httpApp.post('/login', function(req, res) {
+  console.log("Got password: " + req.body.password);
+  res.contentType('json');
+  res.send({ some: JSON.stringify({response:'json'}) });
+  SendUDP("control " + req.body.password);
+});
 
 httpApp.post('/forward', function(req, res) {
     console.log('Forward button pressed!');
