@@ -299,6 +299,12 @@ namespace iRobotCreateControl
                 lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Status: Starting server on port " + tbServerPort.Text));
                 listenerEndPoint = new IPEndPoint(IPAddress.Any, int.Parse(tbServerPort.Text));
                 udpClientListener = new UdpClient(listenerEndPoint);
+                //use this hack to handle the case where there's no one on the other end with UDP
+                uint IOC_IN = 0x80000000;
+                uint IOC_VENDOR = 0x18000000;
+                uint SIO_UDP_CONNRESET = IOC_IN | IOC_VENDOR | 12;
+                udpClientListener.Client.IOControl((int)SIO_UDP_CONNRESET, new byte[] { Convert.ToByte(false) }, null);
+                /////////////////////////////////////
                 Console.Out.WriteLine("Listening on port " + tbServerPort.Text);
                 udpClientListener.BeginReceive(new AsyncCallback(ReceiveCallback), this);
             }
@@ -625,7 +631,7 @@ namespace iRobotCreateControl
                 }
             }
 
-            if (f.Visible)
+            if (f.Visible)                
                 f.udpClientListener.BeginReceive(new AsyncCallback(ReceiveCallback), f);
         }
 
