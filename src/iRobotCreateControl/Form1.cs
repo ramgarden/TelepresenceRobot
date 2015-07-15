@@ -889,7 +889,7 @@ namespace iRobotCreateControl
                             //this will make it go into "off" state
                             //which is lower power and can will accept a charge if already docked.
                             Console.Out.WriteLine("Remote host disconnected, powering down");
-                            robot.SoftReset();
+                            //robot.SoftReset();
                             beenReset = true;
                             lblBattery.Invoke((MethodInvoker)(() => lblBattery.Text = "iRobot Battery: N/A"));
                             pbBattery.Invoke((MethodInvoker)(() => pbBattery.Value = 0));
