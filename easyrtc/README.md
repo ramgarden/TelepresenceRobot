@@ -1,7 +1,8 @@
 install node.js  
 install easyRTC from github.  
 npm install -d body-parser  
-copy down these two files.  
+npm install -d serialport
+copy down these easyrtc files.  
 start it with the batch script.  
 
 Sending UDP message: 125 -25  W  

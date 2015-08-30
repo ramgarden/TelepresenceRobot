@@ -85,15 +85,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Vlc.DotNet.Core">
-      <HintPath>lib\Vlc.DotNet.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Vlc.DotNet.Core.Interops">
-      <HintPath>lib\Vlc.DotNet.Core.Interops.dll</HintPath>
-    </Reference>
-    <Reference Include="Vlc.DotNet.Forms">
-      <HintPath>lib\Vlc.DotNet.Forms.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">

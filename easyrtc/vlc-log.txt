@@ -1,0 +1,60 @@
+﻿-- logger module started --
+core debug: VLC media player - 2.2.1 Terry Pratchett (Weatherwax)
+core debug: Copyright © 1996-2015 the VideoLAN team
+core debug: revision 2.2.1-0-ga425c42
+core debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--host=i686-w64-mingw32' '--disable-debug' 'host_alias=i686-w64-mingw32'
+core debug: using interface module "logger"
+core debug: looking for interface module matching "logger,none": 16 candidates
+logger: VLC media player - 2.2.1 Terry Pratchett (Weatherwax)
+logger: Copyright © 1996-2015 the VideoLAN team
+logger: 
+Warning: if you cannot access the GUI anymore, open a command-line window, go to the directory where you installed VLC and run "vlc -I qt"
+
+logger: using logger.
+logger debug: opening logfile `vlc-log.txt'
+﻿-- logger module started --
+core debug: VLC media player - 2.2.1 Terry Pratchett (Weatherwax)
+core debug: Copyright © 1996-2015 the VideoLAN team
+core debug: revision 2.2.1-0-ga425c42
+core debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--host=i686-w64-mingw32' '--disable-debug' 'host_alias=i686-w64-mingw32'
+core debug: using interface module "logger"
+core debug: creating audio output
+core debug: looking for audio output module matching "any": 6 candidates
+directsound debug: found 2 devices
+core debug: using audio output module "directsound"
+core debug: keeping audio output
+core debug: creating audio output
+core debug: looking for audio output module matching "any": 6 candidates
+directsound debug: found 2 devices
+core debug: using audio output module "directsound"
+core debug: keeping audio output
+﻿-- logger module started --
+core debug: VLC media player - 2.2.1 Terry Pratchett (Weatherwax)
+core debug: Copyright © 1996-2015 the VideoLAN team
+core debug: revision 2.2.1-0-ga425c42
+core debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--host=i686-w64-mingw32' '--disable-debug' 'host_alias=i686-w64-mingw32'
+core debug: using interface module "logger"
+core debug: looking for interface module matching "logger,none": 16 candidates
+logger: VLC media player - 2.2.1 Terry Pratchett (Weatherwax)
+logger: Copyright © 1996-2015 the VideoLAN team
+logger: 
+Warning: if you cannot access the GUI anymore, open a command-line window, go to the directory where you installed VLC and run "vlc -I qt"
+
+logger: using logger.
+logger debug: opening logfile `vlc-log.txt'
+﻿-- logger module started --
+core debug: VLC media player - 2.2.1 Terry Pratchett (Weatherwax)
+core debug: Copyright © 1996-2015 the VideoLAN team
+core debug: revision 2.2.1-0-ga425c42
+core debug: configured with ../extras/package/win32/../../../configure  '--enable-update-check' '--enable-lua' '--enable-faad' '--enable-flac' '--enable-theora' '--enable-twolame' '--enable-quicktime' '--enable-avcodec' '--enable-merge-ffmpeg' '--enable-dca' '--enable-mpc' '--enable-libass' '--enable-x264' '--enable-schroedinger' '--enable-realrtsp' '--enable-live555' '--enable-dvdread' '--enable-shout' '--enable-goom' '--enable-caca' '--disable-sdl' '--enable-qt' '--enable-skins2' '--enable-sse' '--enable-mmx' '--enable-libcddb' '--enable-zvbi' '--disable-telx' '--enable-nls' '--host=i686-w64-mingw32' '--disable-debug' 'host_alias=i686-w64-mingw32'
+core debug: using interface module "logger"
+core debug: creating audio output
+core debug: looking for audio output module matching "any": 6 candidates
+directsound debug: found 2 devices
+core debug: using audio output module "directsound"
+core debug: keeping audio output
+core debug: creating audio output
+core debug: looking for audio output module matching "any": 6 candidates
+directsound debug: found 2 devices
+core debug: using audio output module "directsound"
+core debug: keeping audio output

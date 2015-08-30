@@ -16,7 +16,6 @@ C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\s
 C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\GenerateResource.write.1.tlog
 C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.exe
 C:\Users\Josh\Documents\Makers Local 256\Telepresence Robot\VideoChatRobot_v03\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.pdb
-C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.csprojResolveAssemblyReference.cache
 C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.Form1.resources
 C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.Properties.Resources.resources
 C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.csproj.GenerateResource.Cache
@@ -24,6 +23,3 @@ C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\obj\Deb
 C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\bin\Debug\iRobotCreateControl.exe
 C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\bin\Debug\iRobotCreateControl.pdb
 C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\obj\Debug\iRobotCreateControl.pdb
-C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\bin\Debug\Vlc.DotNet.Core.dll
-C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\bin\Debug\Vlc.DotNet.Core.Interops.dll
-C:\Users\Josh\Documents\GitHub\TelepresenceRobot\src\iRobotCreateControl\bin\Debug\Vlc.DotNet.Forms.dll
