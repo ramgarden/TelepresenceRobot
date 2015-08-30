@@ -4,7 +4,7 @@ AutoStartServer: True
 ServerPort: 250
 ServerPassword: abracadabra
 AutoConnectRemoteRobot: False
-RemoteIP: 192.168.1.69
+RemoteIP: 192.168.0.115
 RemotePort: 250
-RemotePassword: abracadabra
+RemotePassword: pass
 KeyboardControlMotorSpeed: 150

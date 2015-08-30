@@ -875,7 +875,7 @@ namespace iRobotCreateControl
                 {
                     Thread.Sleep(250);
                     long timeSinceLastRecievedMessage = System.Environment.TickCount - lastRecievedNetworkMessageTimestamp;
-                    if (timeSinceLastRecievedMessage > 300000)
+                    if (timeSinceLastRecievedMessage > 30000000)
                     {
                         //don't bother resetting if we are already charging
                         if (robot.sensorState.ChargingState == 2)
@@ -895,7 +895,7 @@ namespace iRobotCreateControl
                         continue;
                     }
 
-                    if (timeSinceLastRecievedMessage > 100000)
+                    if (timeSinceLastRecievedMessage > 10000000)
                     {
                         Console.Out.WriteLine("remote control heartbeat lost, stopping (poor network connection?)");
                         mousePoint = new Point(joyBitmap.Width / 2, joyBitmap.Height / 2);
