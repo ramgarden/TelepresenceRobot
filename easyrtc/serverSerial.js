@@ -33,8 +33,6 @@ var port = new SerialPort('COM4', {baudRate: 57600}, function (err) {
   }
 });
 
-writeSerial(Start);
-
 function writeSerial(message) {
 	port.write(message, function(err) {
 	if (err) {
