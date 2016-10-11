@@ -9,39 +9,6 @@ var robot = require("create-oi");           // iRobot Create Open Interface
  
 robot.init({ serialport: "COM4" });
 
-//iRobot Create OpCodes
-var SoftReset = 7,
-var Start = 128,
-var Baud = 129,
-var Control = 130,
-var Safe = 131,
-var Full = 132,
-var Spot = 134,
-var Cover = 135,
-var Demo = 136,
-var Drive = 137,
-var LowSideDrivers = 138,
-var LEDs = 139,
-var Song = 140,
-var Play = 141,
-var Sensors = 142,
-var CoverAndDock = 143,
-var PWMLowSideDrivers = 144,
-var DriveDirect = 145,
-var DigitalOutputs = 147,
-var Stream = 148,
-var QueryList = 149,
-var PauseResumeStream = 150,
-var SendIR = 151,
-var Script = 152,
-var PlayScript = 153,
-var ShowScript = 154,
-var WaitTime = 155,
-var WaitDistance = 156,
-var WaitAngle = 157,
-var WaitEvent = 158,
-
-
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
