@@ -27,11 +27,8 @@ var rtc = easyrtc.listen(httpApp, socketServer);
 
 // Start up the robot object
 robot.init({ serialport: "COM4" });
+robot.drive(-100, 0);
 
-robot.on('ready', function() {
-    // start by going forward
-    this.drive(100, 0);
-});
 
 // Start up the Serial Port for talking directly to the iRobot Create (TM)
 // var port = new SerialPort('COM4', {baudRate: 57600}, function (err) {
