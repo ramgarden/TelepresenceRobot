@@ -4,10 +4,9 @@ var express = require("express");           // web framework external module
 var io      = require("socket.io");         // web socket external module
 var easyrtc = require("easyrtc");           // EasyRTC external module
 var bodyParser  = require('body-parser');
-var SerialPort = require("serialport");     // SerialPort external module
+//var SerialPort = require("serialport");     // SerialPort external module
 var robot = require("create-oi");           // iRobot Create Open Interface
  
-robot.init({ serialport: "COM4" });
 
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
@@ -26,12 +25,17 @@ var socketServer = io.listen(webServer, {"log level":1});
 // Start EasyRTC server
 var rtc = easyrtc.listen(httpApp, socketServer);
 
+// Start up the robot object
+robot.init({ serialport: "COM4" });
+
 // Start up the Serial Port for talking directly to the iRobot Create (TM)
-var port = new SerialPort('COM4', {baudRate: 57600}, function (err) {
-  if (err) {
-    return console.log('Error: ', err.message);
-  }
-});
+// var port = new SerialPort('COM4', {baudRate: 57600}, function (err) {
+  // if (err) {
+    // return console.log('Error: ', err.message);
+  // }
+// });
+
+
 
 function writeSerial(message) {
 	port.write(message, function(err) {
