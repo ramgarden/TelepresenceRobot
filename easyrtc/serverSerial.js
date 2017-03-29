@@ -57,8 +57,6 @@ var port = new SerialPort('COM4', function (err) {
 
 function QueueCommand(op, param1)
 {
-	if (!connected)
-		return;
 	var opByte = parseInt(op) & 255;
 	var param1Byte = parseInt(param1) & 255;
 	
@@ -70,8 +68,6 @@ function QueueCommand(op, param1)
 
 function QueueCommand(op)
 {
-	if (!connected)
-		return;
 	var opByte = parseInt(op) & 255;
 	messageBuffer[messageIndex] = opByte;
 	messageIndex++;
