@@ -88,7 +88,7 @@ function DoDemo2()
 	SendCommand();
 }
 
-public void SendCommand()
+function SendCommand()
 {
 	try
 	{
@@ -99,7 +99,6 @@ public void SendCommand()
 		console.log(err.message);
 	}
 	messageIndex = 0;
-	Thread.Sleep(5);
 }
 
 
