@@ -50,6 +50,8 @@ var port = new SerialPort('COM4', function (err) {
     }
     console.log('message written');
   });
+  console.log("doing demo 2!");
+  DoDemo2();
 });
 
 
@@ -84,7 +86,9 @@ function StartInFullMode()
 
 function DoDemo2()
 {
+	console.log("queueing demo command.");
 	QueueCommand(Demo, Demo2);
+	console.log("sending command...");
 	SendCommand();
 }
 
@@ -92,6 +96,7 @@ function SendCommand()
 {
 	try
 	{
+		console.log("writing to serial...");
 		writeSerial(messageBuffer);
 	}
 	catch (err)
@@ -111,14 +116,14 @@ function writeSerial(message) {
 	});
 }
 
+//handle all the post events from the client web page
+// for drive commands, etc.
 
 httpApp.post('/login', function(req, res) {
   console.log("Got password: " + req.body.password);
   res.contentType('json');
   res.send({ some: JSON.stringify({response:'json'}) });
   SendUDP("control " + req.body.password);
-  console.log("doing demo 2!");
-  DoDemo2();
 });
 
 httpApp.post('/forward', function(req, res) {
