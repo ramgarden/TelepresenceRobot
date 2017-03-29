@@ -4,9 +4,19 @@ var express = require("express");           // web framework external module
 var io      = require("socket.io");         // web socket external module
 var easyrtc = require("easyrtc");           // EasyRTC external module
 var bodyParser  = require('body-parser');
-//var SerialPort = require("serialport");     // SerialPort external module
-var robot = require("create-oi");           // iRobot Create Open Interface
+var SerialPort = require("serialport");     // SerialPort external module
+//var robot = require("create-oi");           // iRobot Create Open Interface
  
+ 
+//iRobot OpCodes
+var Start = 128;
+var Full = 132;
+var Demo = 136;
+var Demo2 = 2;
+
+//robot serial buffers, etc.
+var messageBuffer = new ArrayBuffer(64);
+var messageIndex = 0;
 
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
@@ -25,18 +35,72 @@ var socketServer = io.listen(webServer, {"log level":1});
 // Start EasyRTC server
 var rtc = easyrtc.listen(httpApp, socketServer);
 
-// Start up the robot object
-robot.init({ serialport: "COM4" });
-robot.drive(-100, 0);
 
 
 // Start up the Serial Port for talking directly to the iRobot Create (TM)
-// var port = new SerialPort('COM4', {baudRate: 57600}, function (err) {
-  // if (err) {
-    // return console.log('Error: ', err.message);
-  // }
-// });
+var SerialPort = require('serialport');
+var port = new SerialPort('COM4', function (err) {
+  if (err) {
+    return console.log('Error: ', err.message);
+  }
+  var opByte = parseInt(Start) & 255;
+  port.write(opByte, function(err) {
+    if (err) {
+      return console.log('Error on write: ', err.message);
+    }
+    console.log('message written');
+  });
+});
 
+
+function QueueCommand(op, param1)
+{
+	if (!connected)
+		return;
+	var opByte = parseInt(op) & 255;
+	var param1Byte = parseInt(param1) & 255;
+	
+	messageBuffer[messageIndex] = opByte;
+	messageIndex++;
+	messageBuffer[messageIndex] = param1Byte;
+	messageIndex++;
+}
+
+function QueueCommand(op)
+{
+	if (!connected)
+		return;
+	var opByte = parseInt(op) & 255;
+	messageBuffer[messageIndex] = opByte;
+	messageIndex++;
+}
+
+function StartInFullMode()
+{
+	QueueCommand(Start);
+	QueueCommand(Full);
+	SendCommand();
+}
+
+function DoDemo2()
+{
+	QueueCommand(Demo, Demo2);
+	SendCommand();
+}
+
+public void SendCommand()
+{
+	try
+	{
+		writeSerial(messageBuffer);
+	}
+	catch (err)
+	{
+		console.log(err.message);
+	}
+	messageIndex = 0;
+	Thread.Sleep(5);
+}
 
 
 function writeSerial(message) {
@@ -54,6 +118,8 @@ httpApp.post('/login', function(req, res) {
   res.contentType('json');
   res.send({ some: JSON.stringify({response:'json'}) });
   SendUDP("control " + req.body.password);
+  console.log("doing demo 2!");
+  DoDemo2();
 });
 
 httpApp.post('/forward', function(req, res) {
