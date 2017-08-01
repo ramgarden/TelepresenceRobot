@@ -15,7 +15,7 @@ var Demo = 136;
 var Demo2 = 2;
 
 //robot serial buffers, etc.
-var messageBuffer = new ArrayBuffer(64);
+var messageBuffer = new Buffer(64);
 var messageIndex = 0;
 
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
