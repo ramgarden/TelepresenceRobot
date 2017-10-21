@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--skip-->
+        <title>Telemaker Remote Presence Robot</title>
+        <link rel="stylesheet" type="text/css" href="/easyrtc/easyrtc.css" />
+
+        <!--hide-->
+        <link rel="stylesheet" type="text/css" href="css/landing.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo_audio_video_simple_hd.css" />
+
+        <!-- Prettify Code -->
+        <script type="text/javascript" src="js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="js/prettify/loadAndFilter.js"></script>
+        <script type="text/javascript" src="js/prettify/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="js/prettify/prettify.css" />
+
+        <!--show--> <!-- Assumes global locations for socket.io.js and easyrtc.js -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
+        <script type="text/javascript" src="js/demo_audio_video_simple.js"></script>
+		<!--<script type="text/javascript" src="js/demo_data_channel_messaging.js"></script>-->
+		
+		
+    </head>
+    <body  onload="connect();">
+        <!--hide-->
+		
+        <div id="container">
+            <div id="main">
+                <!-- Main Content -->
+                <!--show-->
+                <div id="demoContainer">
+                    <div id="connectControls">
+                        <!--<div id="iam">Not yet connected...</div>-->
+						<div><button id='forward-button'>Forward</button>&nbsp;&nbsp;&nbsp;
+						Password<input id='password' name='password' type='text'/>
+						<button id='connect-button'>Connect</button>
+						</div>
+						<div>
+						<button id='left-button'>Left</button>
+						<button id='backward-button'>Backward</button>
+						<button id='right-button'>Right</button>
+						</div>
+                        <br />
+                        <strong>Start Video:</strong>
+                        <div id="otherClients"></div>
+                    </div>
+                    <div id="videos">
+                        <div style="position:relative;float:left;" width="1282" height="722">
+                            <video autoplay="autoplay" id="callerVideo"></video>
+                            <video class="easyrtcMirror" autoplay="autoplay" id="selfVideo" muted="true" volume="0" ></video>
+                        </div>
+                        <!-- each caller video needs to be in it's own div so it's close button can be positioned correctly -->
+                    </div>
+                </div>
+                <!--hide-->
+                <br style="clear:both;" />
+                <hr />
+
+                <!-- End Main Content -->
+            </div>
+            
+        </div>
+        <!--show-->
+		<div id="sendMessageArea">
+		  <div id="iam">Obtaining ID...</div>
+		  <textarea id="sendMessageText"></textarea>
+		  <div id="otherClients"></div>
+		</div>
+		<div id="receiveMessageArea">
+		  Received Messages:
+		  <div id="conversation"></div>
+		</div>
+		
+		<script>
+		var host = $(location).attr('host');
+		
+		var keyIsDown = false;
+		var mouseIsDown = false;
+		var connected = false;
+		
+		$('#connect-button').click(function() {	
+			if(!connected)
+			{
+				console.log("connect button clicked!");
+				$.ajax({
+					type: 'POST',
+					timeout: 500,
+					url: 'http://' + host + '/login',
+					data: {
+						password: $('#password').val()
+					}
+				});	
+				connected = true;
+			}
+		});
+		
+		$('#forward-button').mousedown(function() {
+			if(connected && !mouseIsDown)
+			{
+				mouseIsDown = true;
+				console.log("forward button clicked!");
+				$.ajax({
+					type: 'POST',
+					timeout: 500,
+					url: 'http://' + host + '/forward'
+				});
+			}
+		});
+		
+		$('#left-button').mousedown(function() {
+			if(connected && !mouseIsDown)
+			{
+				mouseIsDown = true;
+				console.log("left button clicked!");
+				$.ajax({
+					type: 'POST',
+					timeout: 500,
+					url: 'http://' + host + '/left'
+				});
+			}
+		});
+		
+		$('#backward-button').mousedown(function() {
+			if(connected && !mouseIsDown)
+			{
+				mouseIsDown = true;
+				console.log("backward button clicked!");
+				$.ajax({
+					type: 'POST',
+					timeout: 500,
+					url: 'http://' + host + '/backward'
+				});
+			}
+		});
+		
+		$('#right-button').mousedown(function() {
+			if(connected && !mouseIsDown)
+			{
+				mouseIsDown = true;
+				console.log("right button clicked!");
+				$.ajax({
+					type: 'POST',
+					timeout: 500,
+					url: 'http://' + host + '/right'
+				});			
+			}
+		});
+		
+		//handle WASD keys for driving!
+		$('body').keypress(function(event){
+			if(connected && !keyIsDown)
+			{
+				switch(event.which) {
+					case 119: //W
+						console.log("clicking forward button...");
+						$('#forward-button').trigger('mousedown');
+						keyIsDown = true;
+						break;
+					case 97:  //A
+						console.log("clicking left button...");
+						$('#left-button').trigger('mousedown');
+						keyIsDown = true;
+						break;
+					case 115: //S
+						console.log("clicking backward button...");
+						$('#backward-button').trigger('mousedown');
+						keyIsDown = true;
+						break;
+					case 100:  //D
+						console.log("clicking right button...");
+						$('#right-button').trigger('mousedown');
+						keyIsDown = true;
+						break;
+				}
+			}
+		});
+		
+		$('body').keyup(function(){
+			if(connected && keyIsDown)
+			{
+				console.log("let go of a key!");
+				keyIsDown = false;
+				mouseIsDown = false;
+				$.ajax({
+					type: 'POST',
+					timeout: 500,
+					url: 'http://' + host + '/stop'
+				});
+			}
+		});
+		
+		$('body').mouseup(function(){
+			if(connected && mouseIsDown)
+			{
+				console.log("let go of mouse!");
+				mouseIsDown = false;
+				keyIsDown = false;
+				$.ajax({
+					type: 'POST',
+					timeout: 500,
+					url: 'http://' + host + '/stop'
+				});			
+			}
+		});
+		
+		</script>
+		
+    </body>
+</html>

@@ -1,5 +1,5 @@
 AutoConnectLocalRobot: True
-COMPort: COM7
+COMPort: COM4
 AutoStartServer: True
 ServerPort: 250
 ServerPassword: abracadabra
