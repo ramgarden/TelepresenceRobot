@@ -73,6 +73,7 @@ demoTwo[0] = 0x88;
 demoTwo[1] = 0x02;
 
 //robot serial buffers, etc.
+<<<<<<< HEAD
 global.messageBuffer = new Buffer(8);
 messageBuffer[0] = 0x80;
 messageBuffer[1] = 0x84;
@@ -81,6 +82,10 @@ messageBuffer[3] = 0x02;
 
 global.messageIndex = 0;
 
+=======
+var messageBuffer = new Buffer(64);
+var messageIndex = 0;
+>>>>>>> origin/master
 
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
