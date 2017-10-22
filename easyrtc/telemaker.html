@@ -74,7 +74,10 @@
 		</div>
 		
 		<script>
-		var host = $(location).attr('host');
+		var host = window.location.host;
+		var protocol = window.location.protocol;
+		var serverUrl = protocol + "//" + host;
+		console.log(serverUrl);
 		
 		var keyIsDown = false;
 		var mouseIsDown = false;
@@ -87,7 +90,7 @@
 				$.ajax({
 					type: 'POST',
 					timeout: 500,
-					url: 'http://' + host + '/login',
+					url: serverUrl + '/login',
 					data: {
 						password: $('#password').val()
 					}
@@ -104,7 +107,7 @@
 				$.ajax({
 					type: 'POST',
 					timeout: 500,
-					url: 'http://' + host + '/forward'
+					url: serverUrl + '/forward'
 				});
 			}
 		});
@@ -117,7 +120,7 @@
 				$.ajax({
 					type: 'POST',
 					timeout: 500,
-					url: 'http://' + host + '/left'
+					url: serverUrl + '/left'
 				});
 			}
 		});
@@ -130,7 +133,7 @@
 				$.ajax({
 					type: 'POST',
 					timeout: 500,
-					url: 'http://' + host + '/backward'
+					url: serverUrl + '/backward'
 				});
 			}
 		});
@@ -143,7 +146,7 @@
 				$.ajax({
 					type: 'POST',
 					timeout: 500,
-					url: 'http://' + host + '/right'
+					url: serverUrl + '/right'
 				});			
 			}
 		});
@@ -186,7 +189,7 @@
 				$.ajax({
 					type: 'POST',
 					timeout: 500,
-					url: 'http://' + host + '/stop'
+					url: serverUrl + '/stop'
 				});
 			}
 		});
@@ -200,7 +203,7 @@
 				$.ajax({
 					type: 'POST',
 					timeout: 500,
-					url: 'http://' + host + '/stop'
+					url: serverUrl + '/stop'
 				});			
 			}
 		});

@@ -73,7 +73,6 @@ demoTwo[0] = 0x88;
 demoTwo[1] = 0x02;
 
 //robot serial buffers, etc.
-<<<<<<< HEAD
 global.messageBuffer = new Buffer(8);
 messageBuffer[0] = 0x80;
 messageBuffer[1] = 0x84;
@@ -82,11 +81,9 @@ messageBuffer[3] = 0x02;
 
 global.messageIndex = 0;
 
-=======
-var messageBuffer = new Buffer(64);
-var messageIndex = 0;
->>>>>>> origin/master
-
+/*
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// HTTP Server - the old way
 // Setup and configure Express http server. Expect a subfolder called "static" to be the web root.
 var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
@@ -104,6 +101,79 @@ var socketServer = io.listen(webServer, {"log level":1});
 
 // Start EasyRTC server
 var rtc = easyrtc.listen(httpApp, socketServer);
+
+// END HTTP server
+/////////////////////////////////////////////////////////////////////////
+*/
+
+///////////////////////////////////////////////////////////////////////
+// Start Express HTTPS server on port 443
+// returns an instance of node-greenlock with additional helper methods
+var lex = require('greenlock-express').create({
+  // set to https://acme-v01.api.letsencrypt.org/directory in production
+  server: 'https://acme-staging.api.letsencrypt.org/directory'
+
+// If you wish to replace the default plugins, you may do so here
+//
+, challenges: { 'http-01': require('le-challenge-fs').create({ webrootPath: 'C:\certificate' }) }
+, store: require('le-store-certbot').create({ webrootPath: 'C:\certificate' })
+
+// You probably wouldn't need to replace the default sni handler
+// See https://git.daplie.com/Daplie/le-sni-auto if you think you do
+//, sni: require('le-sni-auto').create({})
+
+, approveDomains: approveDomains
+});
+
+function approveDomains(opts, certs, cb) {
+  // This is where you check your database and associated
+  // email addresses with domains and agreements and such
+
+
+  // The domains being approved for the first time are listed in opts.domains
+  // Certs being renewed are listed in certs.altnames
+  if (certs) {
+    opts.domains = certs.altnames;
+  }
+  else {
+    opts.email = 'john.doe@example.com';
+    opts.agreeTos = true;
+  }
+
+  // NOTE: you can also change other options such as `challengeType` and `challenge`
+  //opts.challengeType = 'http-01';
+  //opts.challenge = require('le-challenge-fs').create({});
+
+  cb(null, { options: opts, certs: certs });
+}
+
+// handles acme-challenge and redirects to https
+webServer = require('http').createServer(lex.middleware(require('redirect-https')())).listen(8080, function () {
+  console.log("Listening for ACME http-01 challenges on", this.address());
+});
+
+var httpApp = require('express')();
+httpApp.use(express.static(__dirname + "/static/"));
+console.log(__dirname + "/static/");
+httpApp.use(bodyParser.urlencoded({
+  extended: true
+}));
+httpApp.use(bodyParser.json());
+
+// handles your app
+httpsWebServer = require('https').createServer(lex.httpsOptions, lex.middleware(httpApp)).listen(8443, function () {
+  console.log("Listening for ACME tls-sni-01 challenges and serve app on", this.address());
+});
+
+// Start Socket.io so it attaches itself to Express server
+var socketServer = io.listen(httpsWebServer, {"log level":1});
+
+// Start EasyRTC server
+var rtc = easyrtc.listen(httpApp, socketServer);
+
+//END HTTPS SERVER
+//////////////////////////////////////////////////////////////////
+
 
 
 
