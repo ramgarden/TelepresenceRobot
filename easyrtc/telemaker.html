@@ -18,7 +18,9 @@
         <!--show--> <!-- Assumes global locations for socket.io.js and easyrtc.js -->
         <script src="/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="/easyrtc/easyrtc.js"></script>
-        <script type="text/javascript" src="js/demo_audio_video_simple.js"></script>
+        <!--<script type="text/javascript" src="js/demo_audio_video_simple.js"></script>-->
+		<script type="text/javascript" src="/easyrtc/labs/easyrtc_rates.js"></script>
+		<script type="text/javascript" src="js/demo_lowbandwidth.js"></script>
 		<!--<script type="text/javascript" src="js/demo_data_channel_messaging.js"></script>-->
 		
 		
@@ -47,9 +49,11 @@
                         <div id="otherClients"></div>
                     </div>
                     <div id="videos">
-                        <div style="position:relative;float:left;" width="1282" height="722">
+                        <div style="position:relative;float:left;" width="640" height="480">
                             <video autoplay="autoplay" id="callerVideo"></video>
-                            <video class="easyrtcMirror" autoplay="autoplay" id="selfVideo" muted="true" volume="0" ></video>
+							
+                            <video style="visibility:hidden" class="easyrtcMirror" autoplay="autoplay" id="selfVideo" muted="true" volume="0" ></video>
+							
                         </div>
                         <!-- each caller video needs to be in it's own div so it's close button can be positioned correctly -->
                     </div>
@@ -74,6 +78,7 @@
 		</div>
 		
 		<script>
+		easyrtc.setVideoDims(640,480);
 		var host = window.location.host;
 		var protocol = window.location.protocol;
 		var serverUrl = protocol + "//" + host;
